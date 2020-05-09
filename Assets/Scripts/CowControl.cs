@@ -8,21 +8,25 @@ public class CowControl : MonoBehaviour
     public float turnspeed = 8.0f;
     private float spawnRate = 3.0f;
 
+public CowControl(float cowControl)
+    {
+        CowControl = cowControl;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         //Make cow spawn
-        StartCoroutine(SpawnCows());
-
-    }
+        StartCoroutine(SpawnCow());
+    }    
 
     IEnumerator SpawnCow()
     {
         while (true)
         {
             yield return new WaitForSeconds(spawnRate);
-            int index = Random.Range(0, Cows.Count);
-            Instantiate(cows[index]);
+            int index = Random.Range(0, Cow.Count);
+            Instantiate(Cow[index]);
         }
     }
 
